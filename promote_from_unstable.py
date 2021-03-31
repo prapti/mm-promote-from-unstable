@@ -5,7 +5,6 @@ import logging
 FORMAT = '%(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 
-passed_tests = []
 specs_to_promote = []
 tests_not_counted = {}
 
@@ -35,15 +34,16 @@ def create_passed_tests_list(build, test_list):
             tests_not_counted[filename] = title
 
 def compare_passed_tests():
-    next_test_list = []
+    passed_tests = []
     for build in builds:
         if passed_tests:
+            next_test_list = []
             create_passed_tests_list(build, next_test_list)
-            compared = list(set(passed_tests) & set(next_test_list))
+            passed_tests = list(set(passed_tests) & set(next_test_list))
         else:
             create_passed_tests_list(build, passed_tests)
-    logging.info("Total tests to promote: %s" % str(len(compared)))
-    return compared
+    logging.info("Total tests to promote: %s" % str(len(passed_tests)))
+    return passed_tests
 
 list_to_promote = compare_passed_tests()
 logging.info("--------------------The following tests have passed in all reports: --------------------")
