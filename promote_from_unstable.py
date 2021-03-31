@@ -35,9 +35,9 @@ def create_passed_tests_list(build, test_list):
             tests_not_counted[filename] = title
 
 def compare_passed_tests():
+    next_test_list = []
     for build in builds:
         if passed_tests:
-            next_test_list = []
             create_passed_tests_list(build, next_test_list)
             compared = list(set(passed_tests) & set(next_test_list))
         else:
