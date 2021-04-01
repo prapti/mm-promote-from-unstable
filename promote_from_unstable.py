@@ -1,5 +1,4 @@
 import requests
-import sys
 import logging
 
 FORMAT = '%(message)s'
