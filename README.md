@@ -4,6 +4,7 @@
 To install `requests`, run this following instruction in a terminal:
 `python3 -m pip install requests`
 
+### Running the script:
 Run this script with python 3 to get a list of E2E tests that are consistently passing in the unstable branch.
 1. Get the build numbers for the last few unstable test runs.
 2. Run this script with the command `python3 promote_from_unstable.py`.
